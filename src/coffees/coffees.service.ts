@@ -1,9 +1,4 @@
-import {
-  HttpException,
-  HttpStatus,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Coffee } from './entities/coffees.entity';
 
 @Injectable()
@@ -41,7 +36,7 @@ export class CoffeesService {
   udpate(id: string, updatedCoffeeDto: any) {
     const existingCoffee = this.findOne(id);
     if (existingCoffee) {
-      //update the exisiting coffee
+      //update the existing coffee
     }
   }
 
