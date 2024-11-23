@@ -12,6 +12,8 @@ import {
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CoffeesService } from './coffees.service';
+import { CreateCoffeeDto } from './dto/create-coffee.dto';
+import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 
 @ApiTags('Basic REST api actions')
 @Controller('coffees')
@@ -33,15 +35,15 @@ export class CoffeesController {
 
   @Post()
   @HttpCode(HttpStatus.GONE) //can be used to customize http status
-  create(@Body() body) {
+  create(@Body() createCoffeeDto: CreateCoffeeDto) {
     // return body; //handle payload body
-    return this.create(body);
+    return this.create(createCoffeeDto);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() body) {
+  update(@Param('id') id: string, @Body() updateCoffeeDto: UpdateCoffeeDto) {
     // return `This action updates ${id} into ${body}`;
-    return this.coffeesService.udpate(id, body);
+    return this.coffeesService.udpate(id, updateCoffeeDto);
   }
 
   @Put(':id')
