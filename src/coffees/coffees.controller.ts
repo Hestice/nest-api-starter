@@ -23,7 +23,7 @@ export class CoffeesController {
   @Get('flavors') //means coffees/flavors
   findAll() {
     // return 'hello coffee';
-    return this.coffeesService.findAll;
+    return this.coffeesService.findAll();
   }
 
   @Get(':id')
@@ -36,14 +36,15 @@ export class CoffeesController {
   @Post()
   @HttpCode(HttpStatus.GONE) //can be used to customize http status
   create(@Body() createCoffeeDto: CreateCoffeeDto) {
+    console.log(createCoffeeDto instanceof CreateCoffeeDto);
     // return body; //handle payload body
-    return this.create(createCoffeeDto);
+    return this.coffeesService.create(createCoffeeDto);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCoffeeDto: UpdateCoffeeDto) {
     // return `This action updates ${id} into ${body}`;
-    return this.coffeesService.udpate(id, updateCoffeeDto);
+    return this.coffeesService.update(id, updateCoffeeDto);
   }
 
   @Put(':id')

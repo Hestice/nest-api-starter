@@ -6,7 +6,13 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.useGlobalPipes(new ValidationPipe()); //validation pipes for dto validation
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true, //allows only the valid types
+      transform: true,
+      forbidNonWhitelisted: true, //stops the request if invalid types are present
+    }),
+  ); //validation pipes for dto validation
 
   const config = new DocumentBuilder()
     .setTitle('Starter API with NestJS')
