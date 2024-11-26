@@ -30,10 +30,11 @@ export class CoffeesService {
 
   create(createCoffeeDto: any) {
     this.coffees.push(createCoffeeDto);
+    return createCoffeeDto;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  udpate(id: string, updatedCoffeeDto: any) {
+  update(id: string, updatedCoffeeDto: any) {
     const existingCoffee = this.findOne(id);
     if (existingCoffee) {
       //update the existing coffee
