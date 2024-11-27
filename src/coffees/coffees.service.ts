@@ -33,11 +33,15 @@ export class CoffeesService {
     return createCoffeeDto;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   update(id: string, updatedCoffeeDto: any) {
     const existingCoffee = this.findOne(id);
     if (existingCoffee) {
-      //update the existing coffee
+      const index = this.coffees.findIndex((item) => item.id === +id);
+      this.coffees[index] = {
+        ...existingCoffee,
+        ...updatedCoffeeDto,
+      };
+      return this.coffees[index];
     }
   }
 
