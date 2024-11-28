@@ -22,7 +22,7 @@ import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
 export class CoffeesController {
   constructor(private readonly coffeesService: CoffeesService) {}
 
-  @Get() //means coffees/flavors
+  @Get()
   findAll(@Query() paginationQuery: PaginationQueryDto) {
     return this.coffeesService.findAll(paginationQuery);
   }
