@@ -11,6 +11,9 @@ async function bootstrap() {
       whitelist: true, //allows only the valid types
       transform: true,
       forbidNonWhitelisted: true, //stops the request if invalid types are present
+      transformOptions: {
+        enableImplicitConversion: true,
+      },
     }),
   ); //validation pipes for dto validation
 
